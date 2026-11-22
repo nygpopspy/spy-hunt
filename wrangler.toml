@@ -1,5 +1,5 @@
 name = "spy-hunt"
-main = "spy-v2.js"
+main = "spy-v4.js"
 compatibility_date = "2025-09-01"
 
 [[durable_objects.bindings]]
