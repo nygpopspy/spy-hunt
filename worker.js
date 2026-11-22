@@ -67,7 +67,7 @@ export class SpyRoom extends DurableObject {
         no: url.searchParams.get("room"),
         code: url.searchParams.get("code"),
         max, host: null, st: "lobby", r: 0,
-        players: [], list: [], first: null, ns: 1, secret: null, lastK: -1,
+        players: [], list: [], first: null, ns: 1, secret: null, recent: [],
       };
       await this.save();
       server.serializeAttachment({ pid: null, wantHost: true });
@@ -153,10 +153,12 @@ export class SpyRoom extends DurableObject {
           .sort((x, y) => (x.pid === g.host ? -1 : y.pid === g.host ? 1 : x.j - y.j))
           .slice(0, g.max);
         if (ps.length < 3) return err("ต้องมีผู้เล่นออนไลน์อย่างน้อย 3 คน");
+        // 10 รอบล่าสุด ห้ามใช้คู่คำซ้ำ
         const nPairs = WORDS.length / 2;
-        let k;
-        do { k = Math.floor(Math.random() * nPairs); } while (k === g.lastK && nPairs > 1);
-        g.lastK = k;
+        const recent = Array.isArray(g.recent) ? g.recent : [];
+        const pool = [...Array(nPairs).keys()].filter((i) => !recent.includes(i));
+        const k = pool[Math.floor(Math.random() * pool.length)];
+        g.recent = [...recent, k].slice(-10);
         const side = Math.random() < 0.5 ? 0 : 1;
         const ns = ps.length >= 5 ? 2 : 1;
         const idx = shuffle([...ps.keys()]).slice(0, ns);
