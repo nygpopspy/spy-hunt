@@ -1,11 +1,19 @@
 name = "spy-hunt"
-main = "spy-v4.js"
+main = "spy-v5.js"
 compatibility_date = "2025-09-01"
 
 [[durable_objects.bindings]]
 name = "ROOMS"
 class_name = "SpyRoom"
 
+[[durable_objects.bindings]]
+name = "HUB"
+class_name = "Hub"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["SpyRoom"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["Hub"]
