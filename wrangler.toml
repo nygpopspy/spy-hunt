@@ -10,6 +10,10 @@ class_name = "SpyRoom"
 name = "HUB"
 class_name = "Hub"
 
+[[durable_objects.bindings]]
+name = "CR"
+class_name = "CrRoom"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["SpyRoom"]
@@ -17,6 +21,10 @@ new_sqlite_classes = ["SpyRoom"]
 [[migrations]]
 tag = "v2"
 new_sqlite_classes = ["Hub"]
+
+[[migrations]]
+tag = "v3"
+new_sqlite_classes = ["CrRoom"]
 
 [vars]
 LINE_CHANNEL_ID = "2012817400"
