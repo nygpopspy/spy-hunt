@@ -17,3 +17,6 @@ new_sqlite_classes = ["SpyRoom"]
 [[migrations]]
 tag = "v2"
 new_sqlite_classes = ["Hub"]
+
+[vars]
+LINE_CHANNEL_ID = "2012817400"
