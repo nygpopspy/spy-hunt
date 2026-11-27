@@ -26,10 +26,6 @@ new_sqlite_classes = ["Hub"]
 tag = "v3"
 new_sqlite_classes = ["CrRoom"]
 
-[[r2_buckets]]
-binding = "MEDIA"
-bucket_name = "spy-hunt-media"
-
 [vars]
 LINE_CHANNEL_ID = "2012817400"
 SFU_APP_ID = "342af8c31d0019ee0c0d011b11eb76e7"
